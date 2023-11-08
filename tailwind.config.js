@@ -8,8 +8,9 @@ export default {
   theme: {
     extend: {
       colors: {
-            "dark-purple": "#663399",
-             "light-white": "rgb(230, 230, 250)"
+            "dark-purple": "#6b21a8",
+             "light-white": "rgb(230, 230, 250)",
+             "light-purple": "#9333ea"
       }
     },
   },

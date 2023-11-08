@@ -6,15 +6,10 @@ import './App.css'
 
 import { BiCategoryAlt } from "react-icons/bi";
 import { BiSolidDashboard } from "react-icons/bi";
-import { BsArrowLeftCircle } from "react-icons/bs";
-// import { BiArrowFromTop } from "react-icons/bi";
+// import { BsArrowLeftCircle } from "react-icons/bs";
+import { AiOutlineArrowLeft } from "react-icons/ai";
 
 import { IoIosArrowDropdownCircle } from "react-icons/io";
-
-
-
-
-
 
 
 function App() {
@@ -29,46 +24,28 @@ const Menus = [
     {title: "Products and Services", spacing:true},
     {
       title: "Sales",
+      to:"/",
       submenu:true,
       submenuItems: [
-        {title: "Customer"},
-        {title: "Customer"},
-        {title: "Invoices"},
-        {title: "Recurring Invocies"},
+        {title: "Customer", to:"/customer"},
+        {title: "Invoices", to:"/invoices"},
+        {title: "Recurring Invocies", to:"/reinvoices"},
       ]
     },
-    {
-      title: "Purchase",  spacing:true,
-      submenu:true,
-      submenuItems: [
-        {title: "Purchase-1"},
-        {title: "Purchase-3"},
-        {title: "Purchase-1"},
-        {title: "Purchase-33"},
-      ]
+    {title: "Purchase"},
+    {title: "Report"},
+    {title: "Settings"}
     
-    },
-    {title: "Report",  spacing:true},
-    {
-      title: "Settings",
-      submenu:true,
-      submenuItems: [
-        {title: "General"},
-        {title: "User rules"},
-        {title: "Price and Picking"},
-        {title: "Banking Details"},
-      ]
-    
-    }
+  
   
 ]
 
 
   return (
-        <div className='flex'>
+        <div className='grid grid-cols-2'>
              <div  className={`bg-dark-purple h-screen p-5 pt-8 relative duration-300 ${open ? "w-72" : "w-20"}`}>
         
-              <BsArrowLeftCircle  className={`bg-white text-dark-purple font-semibold text-3xl absolute -right-4 top-9 border-6 border-dark-purple cursor-pointer ${!open && "rotate-180"}`} onClick={() => setOpen(!open)}></BsArrowLeftCircle >
+              <AiOutlineArrowLeft  className={`bg-white text-dark-purple font-semibold text-3xl absolute -right-4 top-9 border-6 border-dark-purple cursor-pointer ${!open && "rotate-180"}`} onClick={() => setOpen(!open)}></AiOutlineArrowLeft>
 
 
               <div className='inline-flex'>
@@ -81,7 +58,7 @@ const Menus = [
                       <>
                       <li key={index} 
                       className={`text-gray-300 text-sm flex items-center 
-                      gap-x-4 cursor-pointer p-2 hover:bg-light-white rounded-md mt-2
+                      gap-x-4 cursor-pointer p-2 hover:bg-light-purple rounded-md mt-2
                       ${menu.spacing ? "mt-9" : "mt-2"}`}>
                       
                    
@@ -92,15 +69,15 @@ const Menus = [
 
                           {/* const [subMenuOpen, setSubMenuOpen] = useState(false); */}
                           {menu.submenu && (
-                                   <IoIosArrowDropdownCircle className={`${(subMenuOpen) && "rotate-180"}`} onClick={() => setSubMenuOpen(!subMenuOpen)}></IoIosArrowDropdownCircle>
+                                   <IoIosArrowDropdownCircle className={`duration-300 text-light-white font-semibold text-3xl ${(subMenuOpen) && "rotate-180"}`} onClick={() => setSubMenuOpen(!subMenuOpen)}></IoIosArrowDropdownCircle>
                           )}
                       </li>
-                             {menu.submenu &&  subMenuOpen  && (
+                             {menu.submenu &&  subMenuOpen && open &&(
                                 <ul>
                                   {menu.submenuItems.map((submenuItems, index) => (
                                     <li key={index} 
                                     className={`text-gray-300 text-sm flex items-center 
-                                    gap-x-4 cursor-pointer p-2 hover:bg-light-white rounded-md mt-2
+                                    gap-x-4 cursor-pointer p-2 hover:bg-light-purple rounded-md ml-5 mt-2
                                         `}>
                                     
                                            {submenuItems.title}
@@ -119,7 +96,7 @@ const Menus = [
                  </ul>
              </div>
                  
-             <div className='p-7'>
+             <div className='col-span-2 p-7 bg-blue-300'>
               <h1 className='text-2xl font-semibold'>Home Page</h1>
              </div>
         </div>
