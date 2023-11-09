@@ -21,22 +21,30 @@ function App() {
 
   const Menus = [
     { title: "Dashboard" },
-    { title: "Products and Services", spacing: true },
+    { title: "Products and Services" },
     {
       title: "Sales",
       to: "/",
       submenu: true,
+      spacing: true,
       submenuItems: [
         { title: "Customer", to: "/customer" },
         { title: "Invoices", to: "/invoices" },
         { title: "Recurring Invocies", to: "/reinvoices" },
       ]
     },
-    { title: "Purchase" },
+    { title: "Purchase" ,
+          to:"/",
+          submenu: true,
+          spacing: true,
+          submenuItems: [
+            { title: "bills", to: "/bills" },
+            { title: "Vendor", to: "/vendor" },
+            { title: "Expenses", to: "/expenses" },
+          ]
+     },
     { title: "Report" },
     { title: "Settings" }
-
-
 
   ]
 
@@ -44,23 +52,25 @@ function App() {
   return (
     <div className='grid md:grid-cols-12'>
       <aside className='md:col-span-3 md:pt-0'>
+
+          <div className={`bg-light-purple relative  m-0 p-5 ${open ? "w-72" : "w-20"}` }>
+            <AiOutlineArrowLeft className={`bg-white text-light-purple font-semibold text-3xl absolute -right-5 top-6 border-6 border-dark-purple cursor-pointer ${!open && "rotate-180"}`} onClick={() => setOpen(!open)}></AiOutlineArrowLeft>
+
+
+            <div className={`inline-flex`}>
+              <BiCategoryAlt className='bg-light-purple text-light-white rounded cursor-pointer block float-left mr-2 mt-1 text-4xl '></BiCategoryAlt>
+              <h1 className={`text-white  duration-300 origin-left text-3xl font-medium ${!open && "scale-0"}`}>Accountantly</h1>
+            </div>
+          </div>
         <div className={`bg-dark-purple h-screen p-5 pt-8 relative duration-300 ${open ? "w-72" : "w-20"}`}>
 
-          <AiOutlineArrowLeft className={`bg-white text-dark-purple font-semibold text-3xl absolute -right-4 top-9 border-6 border-dark-purple cursor-pointer ${!open && "rotate-180"}`} onClick={() => setOpen(!open)}></AiOutlineArrowLeft>
-
-
-          <div className='inline-flex'>
-            <BiCategoryAlt className='bg-white rounded cursor-pointer block float-left mr-2  text-4xl '></BiCategoryAlt>
-            <h1 className={`text-white  duration-300 origin-left text-3xl font-medium ${!open && "scale-0"}`}>Accountantly</h1>
-          </div>
-
-          <ul className='pt-2'>
+          <ul className='pt-1'>
             {Menus.map((menu, index) => (
               <>
                 <li key={index}
                   className={`text-gray-300 text-sm flex items-center 
                 gap-x-4 cursor-pointer p-2 hover:bg-light-purple rounded-md mt-2
-                ${menu.spacing ? "mt-9" : "mt-2"}`}>
+                ${menu.spacing ? "mt-5" : "mt-2"}`}>
 
 
                   <span className='text-2xl block float-left'>
@@ -100,7 +110,7 @@ function App() {
 
 
       <main className='md:col-span-9'>
-        
+
         <div className=''>
           <h1 className='text-2xl font-semibold pt-6'>Home Page</h1>
         </div>
